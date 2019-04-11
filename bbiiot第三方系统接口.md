@@ -17,7 +17,7 @@
 #### 1.1 建档请求
 > 描述：采集器与电表建档关系设置
 
-> 接口：（待补充）
+> 接口：/record/rwxf/da
 
 > 方式：POST
 
@@ -32,7 +32,7 @@ sign | String | 否 |签名
 
 参数 | 类型 | 是否必填 | 描述 | 示例值
 -|-|-|-|-
-mode|String|是|接口方式 0-电表增加,1-电表移除
+mode|String|是|接口方式 01-电表增加,00-电表移除
 concentrator | String | 是 | 采集器编号
 meters | String | 是| 电表编号 （数量：1-8）,逗号分隔|322234445555,211123335444|
 
@@ -71,7 +71,7 @@ concentrator | String | 是 |采集器编号
 
 > 描述：报文解析
 
-> 接口：（待补充）
+> 接口：/record/api/decode
 
 > 方式：POST
 
@@ -80,6 +80,7 @@ concentrator | String | 是 |采集器编号
 参数 | 类型 | 是否必填 | 描述 | 示例值
 -|-|-|-|-
 access_token|String|是| 
+sign | String | 否 |签名
 message|String|是| 报文
 
 > 响应参数：
@@ -88,7 +89,7 @@ message|String|是| 报文
 -|-|-|-|-
 code | String | 是 | 返回码
 msg | String | 是 | 返回码描述
-status|String|是|结果状态
+status|String|是|结果状态|0-成功，1-失败
 data|Json|否|抄表数据
 
 #### 1.3 离线抄表请求接口
@@ -123,7 +124,7 @@ mode|int|是|接口方式 1-1小时任务,2-2小时任务,4-4小时任务
 task_id | String | 是 | 任务id|
 device_id|String |是|设备id
 device_type | String | 是| 设备类型：0-集中器、1-表计
-type|String|是|任务下发类型：0-直接通过主站下发、1-通过第三方下发，主站返回任务报文（不传默认主站）
+type|String|否|任务下发类型：0-直接通过主站下发、1-通过第三方下发，主站返回任务报文（不传默认主站）
 
 > 响应参数：
 
@@ -139,7 +140,7 @@ message|String|否| 任务报文
 
 > 描述：召测、拉闸、合闸的任务下发
 
-> 接口：（待补充）
+> 接口：/record/rwxf/rw
 
 > 公共请求参数：
 
@@ -155,7 +156,7 @@ sign | String | 否 |签名
 mode|String|是|接口方式 0-数据召测,1-合闸,2-拉闸
 meter | String | 是| 电表编号 
 task_id | String | 是 | 任务id|
-type|String|是|任务下发类型：0-直接通过主站下发、1-通过第三方下发，主站返回任务报文（不传默认主站）
+type|String|否|任务下发类型：0-直接通过主站下发、1-通过第三方下发，主站返回任务报文（不传默认主站）
 
 > 响应参数：
 
@@ -260,7 +261,7 @@ data | JSON | 是 | 电表数据 | 见附1。多条数据时则是JSON数组结�
 
 > 描述：获取token
 
-> 接口：（待补充）
+> 接口：/auth/oauth/token
 
 > 方式：POST
 
@@ -299,7 +300,7 @@ scope | String | 是 | 鉴权作用域
 
 > 描述：刷新token
 
-> 接口：（待补充）
+> 接口：/auth/oauth/token
 
 > 方式：POST
 
@@ -438,7 +439,9 @@ hjwd | number | 是 |环境温度(℃)
 code（返回码）| msg（返回码描述）|解决方案
 -|-|-
 10000|接口调用成功，调用结果请参考具体的API文档所对应的业务返回参数
-20001|表计已存在召测任务
+11005|表计存在重复
+12001|非法报文
+21001|表计已存在召测任务
 
 # 附4：sign签名规则
 
