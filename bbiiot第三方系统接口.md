@@ -227,7 +227,7 @@ data | JSON | 是 | 电表数据 | 见附1
 sign | String | 是 |签名 | 见附4
 meter | String | 是 | 电表编号 |
 data_id | String | 是 | 数据标识 | UUID，保证唯一即可
-data | JSON | 是 | 电表数据 | 见附1。多条数据时则是JSON数组结构
+data | JsonAarry | 是 | 电表数据 | 见附1。必须是JSON数据，即便是一条数据也应是数组方式
 
 > 请求示例：
     
