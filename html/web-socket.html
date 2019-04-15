@@ -5,16 +5,16 @@
 
     <script type="text/javascript">
         function WebSocketAPIExample() {
-            var token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZW5hbnRAdGhpbmdzYm9hcmQub3JnIiwic2NvcGVzIjpbIlRFTkFOVF9BRE1JTiJdLCJ1c2VySWQiOiI3OTJhYjJhMC00ZmJmLTExZTktYTQ3OC0wMzljMjdhZGY0ZWQiLCJlbmFibGVkIjp0cnVlLCJpc1B1YmxpYyI6ZmFsc2UsInRlbmFudElkIjoiNzhmOTQyNjAtNGZiZi0xMWU5LWE0NzgtMDM5YzI3YWRmNGVkIiwiY3VzdG9tZXJJZCI6IjEzODE0MDAwLTFkZDItMTFiMi04MDgwLTgwODA4MDgwODA4MCIsImlzcyI6InRoaW5nc2JvYXJkLmlvIiwiaWF0IjoxNTU0ODc1MjIwLCJleHAiOjE1NTQ4NzYxMjB9.cYfNtq49q2IW8AUv88FehJ2RVr4mnpslN_G9kPg6bmcUp0o5QEh_iRmhSpKgGPe0GRremzyMk3E-nVT2mqq92w";
-            var entityId = "79aba270-4fbf-11e9-a478-039c27adf4ed";
+            var token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZW5hbnRAdGhpbmdzYm9hcmQub3JnIiwic2NvcGVzIjpbIlRFTkFOVF9BRE1JTiJdLCJ1c2VySWQiOiI0ZjNjMTdhMC01YjhmLTExZTktYmUzMy05YjBjMGQ1ODQ1OGMiLCJlbmFibGVkIjp0cnVlLCJpc1B1YmxpYyI6ZmFsc2UsInRlbmFudElkIjoiNGYxNzJhODAtNWI4Zi0xMWU5LWJlMzMtOWIwYzBkNTg0NThjIiwiY3VzdG9tZXJJZCI6IjEzODE0MDAwLTFkZDItMTFiMi04MDgwLTgwODA4MDgwODA4MCIsImlzcyI6InRoaW5nc2JvYXJkLmlvIiwiaWF0IjoxNTU0OTUxNjIzLCJleHAiOjE1NTQ5NTI1MjN9.hfBFvN4SIH91jb8EiHF3STYBAhG4EQGhHlkDGPIgMUJY9fSEytKgV2s-zns6Qd0Z-E68wQHUzGPm8kAdWfZZtQ";
+            var entityId = "4f9b75b0-5b8f-11e9-be33-9b0c0d58458c";
             var webSocket = new WebSocket("ws://192.168.1.196:9090/api/ws/plugins/telemetry?token=" + token);
 
-            if (entityId != "79aba270-4fbf-11e9-a478-039c27adf4ed") {
+            if (entityId != "4f9b75b0-5b8f-11e9-be33-9b0c0d58458c") {
                 alert("Invalid device id!");
                 webSocket.close();
             }
 
-            if (token != "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZW5hbnRAdGhpbmdzYm9hcmQub3JnIiwic2NvcGVzIjpbIlRFTkFOVF9BRE1JTiJdLCJ1c2VySWQiOiI3OTJhYjJhMC00ZmJmLTExZTktYTQ3OC0wMzljMjdhZGY0ZWQiLCJlbmFibGVkIjp0cnVlLCJpc1B1YmxpYyI6ZmFsc2UsInRlbmFudElkIjoiNzhmOTQyNjAtNGZiZi0xMWU5LWE0NzgtMDM5YzI3YWRmNGVkIiwiY3VzdG9tZXJJZCI6IjEzODE0MDAwLTFkZDItMTFiMi04MDgwLTgwODA4MDgwODA4MCIsImlzcyI6InRoaW5nc2JvYXJkLmlvIiwiaWF0IjoxNTU0ODc1MjIwLCJleHAiOjE1NTQ4NzYxMjB9.cYfNtq49q2IW8AUv88FehJ2RVr4mnpslN_G9kPg6bmcUp0o5QEh_iRmhSpKgGPe0GRremzyMk3E-nVT2mqq92w") {
+            if (token != "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZW5hbnRAdGhpbmdzYm9hcmQub3JnIiwic2NvcGVzIjpbIlRFTkFOVF9BRE1JTiJdLCJ1c2VySWQiOiI0ZjNjMTdhMC01YjhmLTExZTktYmUzMy05YjBjMGQ1ODQ1OGMiLCJlbmFibGVkIjp0cnVlLCJpc1B1YmxpYyI6ZmFsc2UsInRlbmFudElkIjoiNGYxNzJhODAtNWI4Zi0xMWU5LWJlMzMtOWIwYzBkNTg0NThjIiwiY3VzdG9tZXJJZCI6IjEzODE0MDAwLTFkZDItMTFiMi04MDgwLTgwODA4MDgwODA4MCIsImlzcyI6InRoaW5nc2JvYXJkLmlvIiwiaWF0IjoxNTU0OTUxNjIzLCJleHAiOjE1NTQ5NTI1MjN9.hfBFvN4SIH91jb8EiHF3STYBAhG4EQGhHlkDGPIgMUJY9fSEytKgV2s-zns6Qd0Z-E68wQHUzGPm8kAdWfZZtQ") {
                 alert("Invalid JWT token!");
                 webSocket.close();
             }
@@ -34,14 +34,14 @@
                 };
                 var data = JSON.stringify(object);
                 webSocket.send(data);
-                document.getElementById("data").append(data).append("<br>");
-               // alert("Message is sent: " + data);
+                document.getElementById("data").innerHTML = data + "<br/>";
+                // alert("Message is sent: " + data);
             };
 
             webSocket.onmessage = function (event) {
                 var received_msg = event.data;
                 //alert("Message is received: " + received_msg);
-                document.getElementById("data").append(received_msg).append("<br>");
+                document.getElementById("data").innerHTML = received_msg + "<br/>";
             };
 
             webSocket.onclose = function (event) {
@@ -57,7 +57,7 @@
     <div id="sse">
         <a href="javascript:WebSocketAPIExample()">Run WebSocket</a>
     </div>
-<div id="data">
+    <div id="data">
     </div>
 </body>
 
