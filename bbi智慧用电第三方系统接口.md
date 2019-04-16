@@ -1,5 +1,8 @@
-> 本文档默认采用HTTP/HTTPS传输方式，JSON数据格式，UTF-8编码，
->推送数据类型分为3种任务数据，1种告警数据
+> 本文档采用POST请求方式传输，JSON数据格式，UTF-8编码.
+
+>推送数据类型分为2种任务数据，1种告警数据
+
+>以HTTP状态码200判断是否推送成功，不成功数据补发间隔为10分钟、20分钟、30分钟。
 
 # 附1：任务数据帧1
 参数 | 类型 | 是否必填 | 描述 | 示例值
@@ -15,6 +18,7 @@ cxdl | number | 是 |C相电流(A)
 sydl | number | 是 |剩余电流(A)
 zyggl | number | 是 |总有功功率(kW)
 zglys | number | 是 |总功率因数
+zxygzdl | number | 是 |正向有功总电量(kWh)
 
 > 请求示例：
     
@@ -54,30 +58,6 @@ hjwd | number | 是 |环境温度(℃)
                  // 其他附2所定义的...
                 }
     }
-# 附3：日冻结数据
-参数 | 类型 | 是否必填 | 描述 | 示例值
--|-|-|-|-
-meterNo | String | 是 | 表号
-sjsj | String | 是 | 数据时间
-zxygzdl | number | 是 |正向有功总电量(kWh)
-zxygzdl1 | number | 是 |正向有功费率1电量(kWh)
-zxygzdl2 | number | 是 |正向有功费率2电量(kWh)
-zxygzdl3 | number | 是 |正向有功费率3电量(kWh)
-zxygzdl4 | number | 是 |正向有功费率3电量(kWh)
-
-> 请求示例：
-    
-    {
-        "meterNo" : "111800000490",
-        "sjsj" : "2019-04-16 16:00:00",
-        "data" : {
-                "zxygzdl" : 600,
-                "zxygzdl1" : 100,
-                "zxygzdl2" : 200,
-                 ...
-                 // 其他附2所定义的...
-                }
-    }
     
 # 附4：告警数据 数据
 参数 | 类型 | 是否必填 | 描述 | 示例值
@@ -85,7 +65,7 @@ zxygzdl4 | number | 是 |正向有功费率3电量(kWh)
 meterNo | String | 是 | 表号
 sjsj | String | 是 | 数据时间
 code | String | 是 |告警编码 
-data | Json | 否 |部分告警会带当前值
+data | Json | 否 |部分告警会带部分当前值
 
 ## data参数
 参数 | 类型 | 是否必填 | 描述 | 示例值
@@ -119,4 +99,10 @@ hjwd | number | 是 |环境温度(℃)
                  // 其他data参数所定义的...
                 }
     }
-      
+##告警code定义
+> 内容后续补充
+
+|code|事件|
+|-|-|
+|....|....|
+|....|....      
