@@ -35,6 +35,8 @@ sign | String | 否 |签名
 mode|String|是|接口方式 01-电表增加,00-电表移除
 concentrator | String | 是 | 采集器编号
 meters | String | 是| 电表编号 （数量：1-8）,逗号分隔|322234445555,211123335444|
+task_id | String | 否 | 任务id|
+type|String|是|任务下发类型：0-直接通过主站下发、1-通过第三方下发，主站返回任务报文
 
 > 公共响应参数：
 
@@ -65,7 +67,21 @@ concentrator | String | 是 |采集器编号
 	"code": "20000",
 	"msg": "Without the concentrator",
     }
+>主站推送数据示例：
 
+参数 | 类型 | 是否必填 | 描述 | 示例值
+-|-|-|-|-
+task_id|String|是|结果状态|
+zdjh|String|是|结果状态|集中器编号
+sign|String|是|结果状态|
+status|String|是|结果状态|0-成功，1-失败
+
+{
+        "sign" : "xxx",
+        "zdjh" : "111800000490",
+        "task_id" : "aaa-bbb-ccc-ddd",
+        "status" : 0
+    }
 
 ### 1.2 报文解析接口
 
@@ -181,7 +197,49 @@ message|String|否| 任务报文
 	"code": "20000",
 	"msg": "Unfinished task",
     }
-    
+> 档案推送示例：    
+
+参数 | 类型 | 是否必填 | 描述 | 示例值
+-|-|-|-|-
+task_id|String|是|任务id|
+zdjh|String|是|集中器编号|
+sign|String|是|结果状态|
+meterNos|String[]|是|表号|
+
+
+      {
+       "zdjh": "000012345679",
+       "meterNos": [
+           "316120423001",
+           "316120423002",
+           "316120423003",
+           "316120423004",
+           "316120423005",
+           "316120423006",
+           "316120423007",
+           "316120423008",
+           "316120423009"
+       ],
+       "sign": "6e1e8f9328daedc9ac10deef0227aed0743b1d73",
+       "task_id": "785634120000"
+      }
+
+> 非获取数据推送示例：   
+
+参数 | 类型 | 是否必填 | 描述 | 示例值
+-|-|-|-|-
+task_id|String|是|任务id|
+zdjh|String|是|集中器编号|
+sign|String|是|sign|
+status|String|是|结果状态|0-成功，1-失败
+ 
+
+    {
+          "zdjh": "000012345679",
+          "status": 0,
+          "sign": "6e1e8f9328daedc9ac10deef0227aed0743b1d73",
+          "task_id": "785634120000"
+    }
     
 ### 2.2 任务结果回调（异步）
 
